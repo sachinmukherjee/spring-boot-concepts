@@ -1,0 +1,49 @@
+server:
+  jetty:
+    accesslog:
+      append: true
+      enabled: true
+  port: 8080
+spring:
+  application:
+    name: spring-boot-concepts
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: password
+    url: jdbc:mysql://localhost:3306/spring_boot_sample
+    username: root
+  jpa:
+    hibernate:
+      format_sql: true
+    properties:
+      hibernate:
+        generate_statistics: false
+    show-sql: true
+
+  ##Feign Client
+  cloud:
+    openfeign:
+      client:
+        config:
+          rick-and-morty:
+            url: https://rickandmortyapi.com/api
+            connectTimeout: 3000
+            readTimeout: 5000
+
+#management:
+#  security:
+#    enabled: false
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+
+logging:
+  config: classpath:logback.xml
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: /actuator/**

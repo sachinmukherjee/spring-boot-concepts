@@ -1,6 +1,6 @@
 package com.sachinmukharjee.concepts.controller;
 
-import com.sachinmukharjee.concepts.dto.Employee;
+import com.sachinmukharjee.concepts.entity.Employee;
 import com.sachinmukharjee.concepts.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import java.util.List;
 public class EmployeeController {
 
 
-    //@Autowired
+    @Autowired
     private IEmployeeService employeeService;
 
     /*
