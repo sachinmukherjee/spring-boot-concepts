@@ -29,7 +29,24 @@ public class StudentIdCard {
   private Date issueDate;
 
   @OneToOne
-  @JoinColumn(name = "student_id",referencedColumnName = "id")
+  @JoinColumn(name = "student_id", referencedColumnName = "id")
+  // Here student_id is foreign key
+  // id is primary key in the student table
+
+  // Multiple Join Columns. Composite Key
+  /*
+    @JoinColumns({
+            @JoinColumn(name = "address_street",referencedColumnName = "street"),
+            @JoinColumn(name = "address_pin_code",referencedColumnName = "pin_code")
+    })
+  */
+  // Many to Many
+  /*
+  @JoinTable(
+      name = "order_product",
+      joinColumns = @JoinColumn(name = "order_id"),
+      inverseJoinColumns = @JoinColumn(name = "product_id"))
+   */
   @JsonBackReference
   private Student student;
 }
