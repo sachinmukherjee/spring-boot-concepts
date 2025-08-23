@@ -1,5 +1,6 @@
 package com.sachinmukharjee.concepts.interceptor;
 
+import com.sachinmukharjee.concepts.utils.AppConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;
@@ -14,7 +15,7 @@ public class MinimalInterceptor implements HandlerInterceptor {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
     String requestId = UUID.randomUUID().toString();
-    MDC.put("REQUEST_ID", requestId);
+    MDC.put(AppConstants.REQUEST_ID, requestId);
     return true;
   }
 

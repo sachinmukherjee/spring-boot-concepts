@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 @EnableFeignClients
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableCaching
 public class SpringBootConceptsApplication {
 
   public static void main(String[] args) {

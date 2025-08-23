@@ -78,7 +78,7 @@ public class SecurityConfig {
     httpSecurity
         .authorizeHttpRequests(
             auth ->
-                auth.requestMatchers("/v1/user/register","/error").permitAll().anyRequest().authenticated())
+                auth.requestMatchers("/v1/user/register","/error","/actuator/*").permitAll().anyRequest().authenticated())
 
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

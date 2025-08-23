@@ -4,11 +4,8 @@ import com.sachinmukharjee.concepts.dto.UserRegister;
 import com.sachinmukharjee.concepts.entity.Users;
 import com.sachinmukharjee.concepts.repository.IUserDetailRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,7 +34,7 @@ public class UserDetailServiceImpl implements IUserDetailsService {
     Users users = new Users();
     users.setUsername(userRegister.getUserName());
     users.setPassword(userRegister.getEncodedPassword());
-    users.setRole(userRegister.getRole());
+    //users.setRoles(userRegister.getRole().stream().collect(Collectors.toSet()));
     return users;
   }
 }
