@@ -22,7 +22,7 @@ public class LoggingFilter extends OncePerRequestFilter {
     try {
       filterChain.doFilter(request, response);
     } catch (Exception e) {
-      log.error("Exception during filter chain ", e.getMessage());
+      log.error("Exception during filter chain ", e);
       throw e;
     } finally {
       Authentication authAfter = SecurityContextHolder.getContext().getAuthentication();

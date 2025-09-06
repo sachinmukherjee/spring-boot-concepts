@@ -34,4 +34,4 @@ build/
 
 #Custom
 jetty-access.log
-myapp.log
+*.log

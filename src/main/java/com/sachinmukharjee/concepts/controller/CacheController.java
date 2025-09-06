@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 @RestController
@@ -21,10 +22,17 @@ public class CacheController extends AbstractBaseController {
 
     private final ICalculatorService calculatorService;
 
-    @GetMapping("fibonacci")
+    @GetMapping(value = "fibonacci",headers = "X-Version=1")
     public ResponseEntity<Response<Long>> calculateFibonacci(@RequestParam(required = true) Integer number){
-        log.info("Got request to calculate fibonaaci");
+        log.info("Got request to calculate fibonaaci version 1");
         Long result = calculatorService.calculateFibonacci(number);
+        return createSuccessResponse(result);
+    }
+
+    @GetMapping(value = "factorial",headers = "X-Version=2")
+    public ResponseEntity<Response<BigInteger>> calculateFactorial(@RequestParam(required = true) Integer number){
+        log.info("Got request to calculate factorial");
+        BigInteger result = calculatorService.calculateFactorial(number);
         return createSuccessResponse(result);
     }
 }

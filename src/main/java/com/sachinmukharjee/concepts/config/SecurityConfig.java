@@ -1,5 +1,6 @@
 package com.sachinmukharjee.concepts.config;
 
+import com.sachinmukharjee.concepts.authentication.CustomAuthEntryPoint;
 import com.sachinmukharjee.concepts.authentication.JwtAuthenticationProvider;
 import com.sachinmukharjee.concepts.filter.JwtAuthenticationFilter;
 import com.sachinmukharjee.concepts.filter.JwtRefreshFilter;
@@ -18,6 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -33,6 +35,7 @@ public class SecurityConfig {
 
   private final JwtUtils jwtUtils;
   private final IUserDetailsService userDetailsService;
+  private final CustomAuthEntryPoint authenticationEntryPoint;
 
   @Bean
   public DaoAuthenticationProvider daoAuthenticationProvider() {
@@ -59,7 +62,10 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(
-      HttpSecurity httpSecurity, AuthenticationManager authenticationManager, JwtUtils jwtUtils)
+      HttpSecurity httpSecurity,
+      AuthenticationManager authenticationManager,
+      JwtUtils jwtUtils,
+      CustomAuthEntryPoint authenticationEntryPoint)
       throws Exception {
 
     // Authentication filter responsible for login
@@ -78,8 +84,11 @@ public class SecurityConfig {
     httpSecurity
         .authorizeHttpRequests(
             auth ->
-                auth.requestMatchers("/v1/user/register","/error","/actuator/*").permitAll().anyRequest().authenticated())
-
+                auth.requestMatchers("/v1/user/register", "/error", "/actuator/*")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
+        .exceptionHandling(ex -> ex.authenticationEntryPoint(authenticationEntryPoint))
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .csrf(csrf -> csrf.disable())

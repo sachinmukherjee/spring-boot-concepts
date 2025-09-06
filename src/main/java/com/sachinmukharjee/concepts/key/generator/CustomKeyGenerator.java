@@ -2,11 +2,13 @@ package com.sachinmukharjee.concepts.key.generator;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 
 @Slf4j
+@Configuration("customKeyGenerator")
 public class CustomKeyGenerator implements KeyGenerator {
   @Override
   public Object generate(Object target, Method method, Object... params) {
