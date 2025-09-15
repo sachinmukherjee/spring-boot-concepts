@@ -37,11 +37,17 @@ spring:
             readTimeout: 5000
 
     #Kafka Configs
-    kafka:
-      bootstrap-servers: localhost:9092
-      producer:
-        key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    kafka:
+#      bootstrap-servers: localhost:9092
+#      producer:
+#        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#       consumer:
+#        group-id: my-group
+#        auto-offset-reset: earliest
+#        enable-auto-commit: false   # important → we control commit manually
+#        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
   #Redis Configuration
   cache:
@@ -52,12 +58,29 @@ spring:
       host: localhost
       port: 6379
 
+#Custom Configs for different caching logic
 app:
   cache:
     redis:
       enabled: true
       host: localhost
       port: 6379
+  messaging:
+    kafka:
+      enabled: true
+      bootstrap-servers: localhost:9092
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      consumer:
+        group-id: my-group
+        topic: custom-topic
+        auto-offset-reset: earliest
+        enable-auto-commit: false   # important → we control commit manually
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        max-poll-records: 10
+
 
 #management:
 #  security:

@@ -1,4 +1,4 @@
-package com.sachinmukharjee.concepts.event;
+package com.sachinmukharjee.concepts.listner;
 
 import com.sachinmukharjee.concepts.annotation.Scheduled;
 import lombok.extern.slf4j.Slf4j;

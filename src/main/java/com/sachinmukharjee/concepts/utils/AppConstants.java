@@ -9,6 +9,6 @@ public class AppConstants {
   public static final String ROLE_PREFIX = "ROLE_%s";
   public static final String REQUEST_ID = "REQUEST_ID";
   public static final String TRACE_ID = "traceId";
-  public static final String REDIS_ENABLED_CONDITION =
-      "app.cache.redis.enabled";
+  public static final String REDIS_ENABLED_CONDITION = "app.cache.redis.enabled";
+  public static final String KAFKA_ENABLED_CONDITION = "app.messaging.kafka.enabled";
 }
