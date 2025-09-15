@@ -21,6 +21,10 @@ spring:
         order_inserts: true
         order_updates: true
         generate_statistics: true
+  threads:
+    virtual:
+      enabled: true
+
 
   ##Feign Client
   cloud:
