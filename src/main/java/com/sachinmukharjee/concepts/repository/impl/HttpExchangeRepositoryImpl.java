@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @Primary
 @Repository
-public class DatabaseExchangeRepository implements HttpExchangeRepository {
+public class HttpExchangeRepositoryImpl implements HttpExchangeRepository {
 
   @Autowired private IHttpExchangeRepository httpExchangeRepository;
 
