@@ -30,7 +30,7 @@ public class ThreadConfig {
     ThreadFactory virtualThreadFactory = Thread.ofVirtual().factory();
     executor.setThreadFactory(virtualThreadFactory);
 
-    executor.setThreadNamePrefix("virtual-");
+    executor.setThreadNamePrefix("virtual-thread-");
     executor.initialize();
     return executor;
   }
