@@ -16,12 +16,12 @@
     <name>spring-boot-concepts</name>
     <description>Spring Boot Concepts</description>
 
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <url>https://maven.pkg.github.com/sachinmukherjee/datasource-router</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>github</id>-->
+    <!--            <url>https://maven.pkg.github.com/sachinmukherjee/datasource-router</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 
     <properties>
         <java.version>21</java.version>

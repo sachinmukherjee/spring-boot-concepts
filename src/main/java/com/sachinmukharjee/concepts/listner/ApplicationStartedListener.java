@@ -40,7 +40,7 @@ public class ApplicationStartedListener implements ApplicationListener<Applicati
                   method.setAccessible(true);
                   method.invoke(bean);
                 } catch (Exception e) {
-                  e.printStackTrace();
+                  log.error("Error Occured ",e);
                 }
               },
               scheduled.initialDelay(),
